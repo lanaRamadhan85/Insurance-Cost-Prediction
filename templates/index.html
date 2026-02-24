@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Cost Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body style="background-image: url('{{ url_for('static', filename='img/images.jpg') }}');">
+    <div class="container">
+        <div class="form-card">
+            <h1 class="form-title">Insurance Cost Prediction</h1>
+            
+            <form id="predictionForm">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="18" max="100" required 
+                           placeholder="Enter age">
+                </div>
+
+                <div class="form-group">
+                    <label for="sex">Select Sex</label>
+                    <select id="sex" name="sex" required>
+                        <option value="">Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bmi">BMI (e.g. 25.5)</label>
+                    <input type="number" id="bmi" name="bmi" step="0.01" min="10" max="60" required 
+                           placeholder="e.g. 25.5">
+                </div>
+
+                <div class="form-group">
+                    <label for="children">Number of Children</label>
+                    <input type="number" id="children" name="children" min="0" max="10" required 
+                           placeholder="Enter number">
+                </div>
+
+                <div class="form-group">
+                    <label for="smoker">Smoker?</label>
+                    <select id="smoker" name="smoker" required>
+                        <option value="">Select...</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <select id="region" name="region" required>
+                        <option value="">Select...</option>
+                        <option value="northeast">Northeast</option>
+                        <option value="northwest">Northwest</option>
+                        <option value="southeast">Southeast</option>
+                        <option value="southwest">Southwest</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-predict">Predict Cost</button>
+            </form>
+
+            <div id="result" class="result-display" style="display: none;">
+                <p class="result-text">Estimasi Biaya Asuransi: <span id="predictionValue">$0.00</span></p>
+            </div>
+
+            <div id="error" class="error-container" style="display: none;">
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Hide previous results/errors
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.btn-predict');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(this);
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Show result
+                    document.getElementById('predictionValue').textContent = data.formatted_prediction;
+                    document.getElementById('result').style.display = 'block';
+                    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    // Show error
+                    document.getElementById('errorMessage').textContent = data.error || 'An error occurred';
+                    document.getElementById('error').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('errorMessage').textContent = 'Connection error. Please ensure the server is running.';
+                document.getElementById('error').style.display = 'block';
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
+

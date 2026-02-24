@@ -1,0 +1,92 @@
+# =========================
+# PYTHON
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# =========================
+# VIRTUAL ENVIRONMENT
+# =========================
+env/
+venv/
+ENV/
+.venv/
+
+# =========================
+# FLASK
+# =========================
+instance/
+.webassets-cache
+
+# =========================
+# JUPYTER NOTEBOOK
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# TESTING / COVERAGE
+# =========================
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# =========================
+# DATABASE (if used later)
+# =========================
+*.sqlite3
+
+# =========================
+# IDE / EDITOR
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =========================
+# OS FILES
+# =========================
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# ENVIRONMENT VARIABLES
+# =========================
+.env
+.env.*
+.env.local
+
+# =========================
+# LOG FILES
+# =========================
+*.log
+
+# =========================
+# MODEL FILES (OPTIONAL)
+# Uncomment if you DO NOT want to upload trained models
+# =========================
+# model/*.pkl
