@@ -15,7 +15,7 @@ Menganalisis faktor-faktor yang paling berpengaruh terhadap biaya
 asuransi. 3. Mengimplementasikan model dalam bentuk web application
 menggunakan Flask.
 
-====================================================================
+==========================================================================
 DATASET INFORMATION
 ====================================================================
 
@@ -27,12 +27,12 @@ yang ditanggung - smoker : Status perokok (yes/no) - region : Wilayah
 (northeast, northwest, southeast, southwest) - charges : Biaya asuransi
 (target variable)
 
-====================================================================
+==========================================================================
 PROJECT STRUCTURE
 ====================================================================
 
-insurance-cost-prediction-ml/ │ ├── data/ │ └── insurance.csv │ ├──
-notebooks/ │ ├── project_data_mining_asuransi.ipynb │ └──
+insurance-cost-prediction-ml/ │ 
+├── data/ │ └── insurance.csv │ ├──notebooks/ │ ├── project_data_mining_asuransi.ipynb │ └──
 project_asuransi.ipynb │ ├── model/ │ ├── insurance_model.pkl │ └──
 encoders.pkl │ ├── templates/ │ └── index.html │ ├── static/ │ └──
 style.css │ ├── app.py ├── train_model.py ├── requirements.txt └──
