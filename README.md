@@ -43,8 +43,9 @@ Features:
 PROJECT STRUCTURE
 =================
 
-insurance-cost-prediction-ml/
-│
+
+insurance-cost-prediction/
+
 ├── data/
 │   └── insurance.csv
 │
