@@ -1,4 +1,4 @@
-INSURANCE COST PREDICTION - MACHINE LEARNING WEB APPLICATION
+ INSURANCE COST PREDICTION - MACHINE LEARNING WEB APPLICATION
 
 Aplikasi web berbasis Flask untuk memprediksi biaya asuransi kesehatan menggunakan model Machine Learning (Linear Regression). Project ini mencakup Exploratory Data Analysis (EDA), preprocessing data, model training, evaluasi model, dan web deployment.
 
